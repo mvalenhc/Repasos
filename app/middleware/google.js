@@ -25,4 +25,4 @@ passport.use(
     } */
     return cb(null, profile);
   }
-));
+))
