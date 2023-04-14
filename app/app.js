@@ -3,8 +3,11 @@ import dotenv from "dotenv";
 import  LoginRoute  from "./routes/login.routes.js";
 import  passport from "passport";
 import "./middleware/google.js";
-
-
+import ejs from "ejs";
+import path from "path";
+import * as url from 'url';
+import Routes from "./routes/backoffice.routes.js";
+import Route from "./routes/home.routes.js";
 const app = express();
 
 //SETTINGS
@@ -21,8 +24,22 @@ app.use("/auth",passport.authenticate('auth-google',{
 
 }),LoginRoute);
 
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
 app.set("port", process.env.PORT || 6999);
 
+//Plantilla ejs
+app.set("view engine", "ejs");
+
+//direccion de view para ejs 
+app.set("views", path.join(__dirname, "views"));
+
+app.use('/', Routes);
+app.use('/',Route);
+app.use('/service/',Route);
+
+app.use(express.static(__dirname + '../public'));
 app.get("/",(req,res)=>{
     res.send("Hi Welcome")
 });

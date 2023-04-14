@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 //const email = ["guerreroydragonxxs@gmail.com"];
-
+  
 passport.use(   
     "auth-google",
     new GoogleStrategy({

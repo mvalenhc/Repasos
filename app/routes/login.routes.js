@@ -4,7 +4,12 @@ const LoginRoute = Router();
 
 
 LoginRoute.get("/google", (req,res)=>{
-   res.send(req.user);
+   
+   const id = (req.user.id);
+   const name = req.user.displayName;
+   const email = req.user.emails[0].value;
+
+   res.render("backoffice",{nombre:""});
 });
 
 
