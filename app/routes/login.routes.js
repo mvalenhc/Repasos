@@ -9,7 +9,7 @@ LoginRoute.get("/google", (req,res)=>{
    const name = req.user.displayName;
    const email = req.user.emails[0].value;
 
-   res.render("backoffice",{nombre:""});
+   res.render("backoffice",{nombre:" "});
 });
 
 

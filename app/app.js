@@ -8,6 +8,8 @@ import path from "path";
 import * as url from 'url';
 import Routes from "./routes/backoffice.routes.js";
 import Route from "./routes/home.routes.js";
+import dash from "./routes/dashboard.routes.js";
+
 const app = express();
 
 //SETTINGS
@@ -37,12 +39,14 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use('/', Routes);
 app.use('/',Route);
-app.use('/service/',Route);
+app.use('/service',Route);
+app.use('/dashboard',dash);
 
 app.use(express.static(__dirname + '../public'));
-app.get("/",(req,res)=>{
+
+/* app.get("/",(req,res)=>{
     res.send("Hi Welcome")
-});
+}); */
 
 
 

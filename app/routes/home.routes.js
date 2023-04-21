@@ -15,7 +15,7 @@ Route.get('/contact', (req,res)=>{
     res.render("contact");
 })
 
-Route.get('/index', (req,res)=>{
+Route.get('/', (req,res)=>{
     res.render("index");
 })
 
