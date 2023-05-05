@@ -30,7 +30,7 @@ LoginRoute.get("/google", (req,res)=>{
    res.cookie("ckvalenuuu", token);
 
 
-   res.redirect("/dashboard/inicio")
+   res.redirect("/v1/inicio")
 
    // res.render("backoffice",{nombre:" "});
 });
