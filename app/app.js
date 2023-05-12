@@ -10,6 +10,7 @@ import Routes from "./routes/backoffice.routes.js";
 import Route from "./routes/home.routes.js";
 import dash from "./routes/dashboard.routes.js";
 import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
 
 const app = express();
 
@@ -20,6 +21,7 @@ dotenv.config();
 app.use(express.json());
 app.use(passport.initialize());
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use("/auth",passport.authenticate('auth-google',{
     scope:["https://www.googleapis.com/auth/userinfo.email",
