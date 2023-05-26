@@ -143,6 +143,37 @@ dash.get("/edit-user", (req, res)=>{
    
 })
 
+dash.get("/borrar", async (req, res)=>{
+    const id = req.query.id;
+    if(req.cookies.ckvalenuuu){
+        try {
+            const token = jwt.verify
+            (req.cookies.ckvalenuuu,
+            process.env.SECRET_KEY);
+
+            const url = `http://localhost:3000/api/user/${id}`;
+            const option ={
+                method:"DELETE"
+            };
+            const result = await fetch(url, option)  
+            .then(response=>response.json())
+            .then(data=>{
+                if(data[0].affectedRows==1){
+                    
+                    console.log("borrado");
+                }else{
+                    console.log("NO BORRADO");
+                }
+               
+            })
+            res.redirect("/v1/usuario");
+        } catch (error) {
+            console.error("error con el token");
+        }
+    }
+
+})
+
 dash.get("/salir",(req,res)=>{
     res.clearCookie("ckvalenuuu");
     res.redirect("/")

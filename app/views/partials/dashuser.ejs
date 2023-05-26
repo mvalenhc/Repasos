@@ -67,9 +67,9 @@
                   <a href="edit-user?id=<%= elements.ID %>&name=<%= elements.NAME %>" class="btn btn-warning">
                     <i class="fa fa-edit"></i>
                   </a>
-                  <button class="btn btn-danger">
+                  <a  class="btn btn-danger" onclick="confirmar(`<%= elements.ID %>`);">
                     <i class="fa fa-trash"></i>
-                  </button>
+                  </a>
                 </th>
               </tr>
             <% }) %>
@@ -113,4 +113,26 @@
       <!-- /.modal-dialog -->
     </div>
   </div>
+  <script>
+     function confirmar(id) {
+      Swal.fire({
+  title: 'Estas Seguro?',
+  text: "Estas realmente seguro de eliminarlo " + id,
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, seguro!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location.href=``
+    Swal.fire(
+      'Borrado!',
+      'Su registro ha sido borrado',
+      'success'
+    )
+  }
+})
+     }
+  </script>
   
